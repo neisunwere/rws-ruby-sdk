@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 require 'rakuten_web_service'
+require 'uri'
 
 application_id = ARGV.shift
 keyword = ARGV[0..-1].join(' ')
