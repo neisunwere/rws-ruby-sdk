@@ -1,5 +1,6 @@
 require 'faraday'
 require 'faraday_middleware'
+require 'uri'
 
 require 'rakuten_web_service/response'
 
