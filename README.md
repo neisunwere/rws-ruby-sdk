@@ -53,21 +53,28 @@ bundlerを利用したアプリケーションの場合、Gemfileに以下の1�
 
 ## 使用方法
 
+### 事前準備: アプリケーションIDの取得
+
+楽天ウェブサービスAPIを利用の際に、アプリケーションIDが必要です。
+まだ取得していない場合は、楽天ウェブサービスAPIの[アプリケーション登録](https://webservice.rakuten.co.jp/app/create)を行い、アプリケーションIDを取得してください。
+
 ### 設定
 
 `RakutenWebService.configuration` メソッドを使い、Application IDとAffiliate ID（オプション）を指定することができます。
 
 ```ruby
   RakutenWebService.configuration do |c|
-    c.application_id = YOUR_APPLICATION_ID
-    c.affiliate_id = YOUR_AFFILIATE_ID
+    c.application_id = 'YOUR_APPLICATION_ID'
+    c.affiliate_id = 'YOUR_AFFILIATE_ID'
   end
 ```
+
+`'YOUR_APPLICATION_ID'` と `'YOUR_AFFILIATE_ID'` は、実際のアプリケーションIDとアフィリエイトIDに置き換えてください。
 
 ### 市場商品の検索
 
 ```ruby
-  items = RakutenWebService::Ichiba::Item.search(:keyword => 'Ruby') # This returns Enamerable object
+  items = RakutenWebService::Ichiba::Item.search(:keyword => 'Ruby') # This returns Enumerable object
   items.first(10).each do |item|
     puts "#{item['itemName']}, #{item.price} yen" # You can refer to values as well as Hash.
   end

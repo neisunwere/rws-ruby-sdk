@@ -20,7 +20,11 @@ describe RWS::Kobo::Genre do
   before do
     @expected_request = stub_request(:get, endpoint).
       with(:query => expected_query).
+<<<<<<< HEAD
       to_return(:body => expected_json)
+=======
+      to_return(:body => expected_json.to_json)
+>>>>>>> 689f8db40135703107a7d40033f2170fc3a8ee27
 
     RakutenWebService.configuration do |c|
       c.affiliate_id = affiliate_id
@@ -41,7 +45,7 @@ describe RWS::Kobo::Genre do
   describe '#search' do
     before do
       stub_request(:get, endpoint).with(:query => expected_query).
-        to_return(:body => expected_json)
+        to_return(:body => expected_json.to_json)
     end
 
     context 'Without arguments' do
